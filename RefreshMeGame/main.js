@@ -1,25 +1,46 @@
-let randonNumber1 =Math.floor(Math.random()*6)+1;
+const dieOne = document.querySelector("#die-one");
+const dieTwo = document.querySelector("#die-two");
+const playerOne = document.querySelector("#player-one");
+const playerTwo = document.querySelector("#player-two");
+const captionOne = document.querySelector("#caption-one");
+const captionTwo = document.querySelector("#caption-two");
+const result = document.querySelector("#result");
+const rollButton = document.querySelector("#roll-button");
 
-let randonDiceImage = "dice"+ randonNumber1 + ".png";
+function rollDice(animate = true) {
+  const rollOne = Math.floor(Math.random() * 6) + 1;
+  const rollTwo = Math.floor(Math.random() * 6) + 1;
 
-let randonImageSource = "images/"+ randonDiceImage ;
+  dieOne.src = `./Images/dice${rollOne}.png`;
+  dieTwo.src = `./Images/dice${rollTwo}.png`;
+  dieOne.alt = `Player one rolled a ${rollOne}`;
+  dieTwo.alt = `Player two rolled a ${rollTwo}`;
 
-let image1 = document.querySelectorAll("img")[0]
+  playerOne.classList.toggle("is-winner", rollOne > rollTwo);
+  playerTwo.classList.toggle("is-winner", rollTwo > rollOne);
 
-image1.setAttribute("src", randonImageSource)
+  if (rollOne > rollTwo) {
+    result.textContent = "Player one takes the win!";
+    captionOne.textContent = "Winner";
+    captionTwo.textContent = "Next time!";
+  } else if (rollTwo > rollOne) {
+    result.textContent = "Player two takes the win!";
+    captionOne.textContent = "Next time!";
+    captionTwo.textContent = "Winner";
+  } else {
+    result.textContent = "It's a draw! Roll again.";
+    captionOne.textContent = "A perfect tie";
+    captionTwo.textContent = "A perfect tie";
+  }
 
-//Application sur la 2eme boule 
-let randonNumber2 = Math.floor(Math.random()*6)+1 ;
-
-let randonImageSource2 = "images/dice"+ randonNumber2 + ".png"
-
-document.querySelectorAll("img")[1].setAttribute("src",randonImageSource2)
-
-if ( randonNumber1 > randonNumber2){
-    document.querySelector("h1").innerHTML = "player 1 wins !"
-}else if (randonNumber1 < randonNumber2){
-    document.querySelector("h1").innerHTML = "player 2 wins !"
-} else {
-    document.querySelector("h1").innerHTML = "Draw"
+  if (animate) {
+    dieOne.classList.remove("is-rolling");
+    dieTwo.classList.remove("is-rolling");
+    void dieOne.offsetWidth;
+    dieOne.classList.add("is-rolling");
+    dieTwo.classList.add("is-rolling");
+  }
 }
 
+rollButton.addEventListener("click", () => rollDice());
+rollDice(false);

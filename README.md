@@ -10,7 +10,7 @@ result.
 2. Compare the two dice:
    - The player with the higher roll wins.
    - Equal rolls result in a draw.
-3. Refresh the page to roll again.
+3. Select **Roll again** for another round.
 
 ## Requirements
 

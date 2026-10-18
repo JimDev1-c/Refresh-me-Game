@@ -1,31 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Refresh Me Exercice</title>
-    <link rel="stylesheet" href="style.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A quick, friendly dice duel. Roll the dice and see who wins."
+    />
+    <meta name="theme-color" content="#101522" />
+    <title>Refresh Me — Dice Duel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
   </head>
   <body>
-    <div class="container">
-      <h1>Refresh Me</h1>
+    <main class="page-shell">
+      <header class="brand">
+        <span class="brand-mark" aria-hidden="true">R</span>
+        <span>Refresh Me</span>
+      </header>
 
-      <div class="dice">
-        <p>Player 1</p>
-        <img class="img1" src="./images/dice6.png" />
-      </div>
+      <section class="game" aria-labelledby="game-title">
+        <div class="game-heading">
+          <p class="eyebrow"><span></span> THE QUICK DICE DUEL</p>
+          <h1 id="game-title">Ready, set, roll.</h1>
+          <p class="intro">Two players. One roll. Let the dice decide.</p>
+        </div>
 
-      <div class="dice">
-        <p>Player 2</p>
-        <img class="img2" src="./images/dice6.png" />
-      </div>
-    </div>
+        <div class="scoreboard" aria-label="Dice results">
+          <article class="player-card" id="player-one">
+            <div class="player-info">
+              <span class="player-number">01</span>
+              <h2>Player one</h2>
+            </div>
+            <div class="die-wrap">
+              <img
+                class="die"
+                id="die-one"
+                src="./Images/dice6.png"
+                alt="Player one rolled a six"
+              />
+            </div>
+            <p class="player-caption" id="caption-one">Ready to play</p>
+          </article>
 
-    <footer>www 🎲 App Brewery 🎲 com</footer>
-    <script src="main.js"></script>
-</body>
+          <div class="versus" aria-hidden="true"><span>VS</span></div>
+
+          <article class="player-card" id="player-two">
+            <div class="player-info">
+              <span class="player-number">02</span>
+              <h2>Player two</h2>
+            </div>
+            <div class="die-wrap">
+              <img
+                class="die"
+                id="die-two"
+                src="./Images/dice6.png"
+                alt="Player two rolled a six"
+              />
+            </div>
+            <p class="player-caption" id="caption-two">Ready to play</p>
+          </article>
+        </div>
+
+        <div class="game-actions">
+          <p class="result" id="result" role="status" aria-live="polite">
+            Roll the dice to find out
+          </p>
+          <button class="roll-button" id="roll-button" type="button">
+            <span aria-hidden="true">↻</span>
+            Roll again
+          </button>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>Made for a little friendly competition</span>
+        <span class="footer-dice" aria-hidden="true">⚄</span>
+      </footer>
+    </main>
+  </body>
 </html>
